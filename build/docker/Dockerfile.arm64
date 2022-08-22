@@ -37,7 +37,7 @@ RUN add-apt-repository ppa:ubuntu-toolchain-r/test
 
 RUN apt-get -qq update                                                      && \
     apt-get -qq install -y curl                                             && \
-    apt-get -qq install -y openjdk-8-jdk                                    && \
+    apt-get -qq install -y openjdk-11-jdk                                   && \
     apt-get -qq install -y patch                                            && \
     apt-get -qq install -y gcc-9 g++-9 libc6-dev make tzdata                && \
     apt-get -qq install -y ca-certificates libgnutls30                      && \
