@@ -1,4 +1,31 @@
-# Cloud Spanner Emulator
+# This Fork
+This fork of the cloud spanner emulator exists solely to provide a dockerfile to build 
+an image of the emulator that can run on arm64 machines - apple M1s specifically. 
+
+This fork makes a couple of dependency changes to allow the emulator to run on M1s.
+* Upgrades zetasql from 2021.09.1 --> 2022.02.1
+* Applies a patch to zetasql to use m4 (has not been incorporated into the upstream branch)
+
+You can build the emulator docker image from the source root with:
+
+```shell
+docker build . -t emulator -f build/docker/Dockerfile.arm64
+```
+
+If you are on an amd chip and need to build the arm64 image you can do so from the source root with: 
+
+```shell
+docker buildx build . -t emulator -f build/docker/Dockerfile.arm64 --platform=linux/arm64
+```
+
+If you run into this issue `FATAL: Failed to open '/proc/self/exe' as a 
+zip file: (error: 9): Bad file descriptor`, you may need to run the following command:
+```shell
+docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+```
+
+
+# Original Readme
 
 Cloud Spanner Emulator provides application developers with a locally-running,
 _emulated_ instance of Cloud Spanner to enable local development and testing.

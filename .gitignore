@@ -3,3 +3,5 @@ bazel-cloud-spanner-emulator
 bazel-genfiles
 bazel-out
 bazel-testlogs
+.ijwb
+.bazeliskrc
